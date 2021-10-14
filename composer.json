@@ -1,0 +1,21 @@
+{
+  "name": "eugene-petrov/magento2-web-api",
+  "description": "Magento 2 snippets: web api calls, table, models, crud operations",
+  "license": [
+    "proprietary",
+    "BSD-3-Clause"
+  ],
+  "type": "magento2-module",
+  "require": {
+    "php": "^7.2.0"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Snippet\\WebApi\\": ""
+    }
+  }
+}
