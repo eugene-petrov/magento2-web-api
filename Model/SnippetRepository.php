@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Snippet\WebApi\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchResultsInterface;
+use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Snippet\WebApi\Api\SnippetRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -55,18 +58,22 @@ class SnippetRepository implements SnippetRepositoryInterface
     }
 
     /**
-     * @inheridoc
+     * @param SnippetInterface $snippet
+     * @return SnippetInterface
+     * @throws AlreadyExistsException
      */
-    public function save(SnippetInterface $snippet)
+    public function save(SnippetInterface $snippet): SnippetInterface
     {
         $this->snippetResource->save($snippet);
         return $snippet;
     }
 
     /**
-     * @inheridoc
+     * @param int $snippetId
+     * @return SnippetInterface
+     * @throws NoSuchEntityException
      */
-    public function getById(int $snippetId)
+    public function getById(int $snippetId): SnippetInterface
     {
         $snippet = $this->snippetFactory->create();
         $this->snippetResource->load($snippet, $snippetId);
@@ -79,9 +86,10 @@ class SnippetRepository implements SnippetRepositoryInterface
     }
 
     /**
-     * @inheridoc
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return SearchResultsInterface
      */
-    public function getList(SearchCriteriaInterface $searchCriteria)
+    public function getList(SearchCriteriaInterface $searchCriteria): SearchResultsInterface
     {
         $collection = $this->snippetCollectionFactory->create();
 
@@ -95,13 +103,17 @@ class SnippetRepository implements SnippetRepositoryInterface
     }
 
     /**
-     * @inheridoc
+     * @param int $snippetId
+     * @return bool
      */
-    public function deleteById(int $snippetId)
+    public function deleteById(int $snippetId): bool
     {
-        $snippet = $this->getById($snippetId);
-        $this->snippetResource->delete($snippet);
-
-        return true;
+        try {
+            $snippet = $this->getById($snippetId);
+            $this->snippetResource->delete($snippet);
+            return true;
+        } catch (LocalizedException $e) {
+            return false;
+        }
     }
 }
