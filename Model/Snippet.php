@@ -14,7 +14,7 @@ class Snippet extends AbstractModel implements IdentityInterface, SnippetInterfa
     const CACHE_TAG = 'snippet_data';
 
     /**
-     * @inheridoc
+     * @return void
      */
     protected function _construct()
     {
@@ -22,7 +22,7 @@ class Snippet extends AbstractModel implements IdentityInterface, SnippetInterfa
     }
 
     /**
-     * @inheridoc
+     * @return string[]
      */
     public function getIdentities(): array
     {
@@ -30,51 +30,54 @@ class Snippet extends AbstractModel implements IdentityInterface, SnippetInterfa
     }
 
     /**
-     * @inheridoc
+     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->getData(self::NAME);
     }
 
     /**
-     * @inheridoc
+     * @param string $name
+     * @return SnippetInterface
      */
-    public function setName(string $name)
+    public function setName(string $name): SnippetInterface
     {
         $this->setData(self::NAME, $name);
         return $this;
     }
 
     /**
-     * @inheridoc
+     * @return string|null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->getData(self::DESCRIPTION);
     }
 
     /**
-     * @inheridoc
+     * @param string $description
+     * @return SnippetInterface
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): SnippetInterface
     {
         $this->setData(self::DESCRIPTION, $description);
         return $this;
     }
 
     /**
-     * @inheridoc
+     * @return string|null
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?string
     {
         return $this->getData(self::CREATED_AT);
     }
 
     /**
-     * @inheridoc
+     * @param string $createdAt
+     * @return SnippetInterface
      */
-    public function setCreatedAt(string $createdAt)
+    public function setCreatedAt(string $createdAt): SnippetInterface
     {
         $this->setData(self::CREATED_AT, $createdAt);
         return $this;

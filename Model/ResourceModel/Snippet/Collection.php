@@ -11,7 +11,7 @@ use Snippet\WebApi\Model\Snippet as SnippetModel;
 class Collection extends AbstractCollection
 {
     /**
-     * @inheridoc
+     * @return void
      */
     protected function _construct()
     {

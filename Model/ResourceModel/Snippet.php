@@ -11,7 +11,7 @@ class Snippet extends AbstractDb
     const TABLE_NAME = 'snippet_table';
 
     /**
-     * @inheridoc
+     * @return void
      */
     protected function _construct()
     {

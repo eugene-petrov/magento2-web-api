@@ -25,33 +25,33 @@ interface SnippetInterface
     /**
      * @return string|null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param string $name
      * @return SnippetInterface
      */
-    public function setName(string $name);
+    public function setName(string $name): SnippetInterface;
 
     /**
      * @return string|null
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * @param string $description
      * @return SnippetInterface
      */
-    public function setDescription(string $description);
+    public function setDescription(string $description): SnippetInterface;
 
     /**
      * @return string|null
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): ?string;
 
     /**
      * @param string $createdAt
      * @return SnippetInterface
      */
-    public function setCreatedAt(string $createdAt);
+    public function setCreatedAt(string $createdAt): SnippetInterface;
 }

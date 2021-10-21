@@ -24,9 +24,9 @@ class AddData implements DataPatchInterface
     }
 
     /**
-     * @inheritDoc
+     * @return DataPatchInterface
      */
-    public function apply()
+    public function apply(): DataPatchInterface
     {
         $table = $this->resourceConnection->getConnection()->getTableName(Snippet::TABLE_NAME);
         $this->resourceConnection
@@ -58,17 +58,17 @@ class AddData implements DataPatchInterface
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }
